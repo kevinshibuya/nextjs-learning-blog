@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -14,6 +15,12 @@ export default function Home() {
         <h1 className={styles.title}>
           Read <Link href="/posts/first-post">this page!</Link>
         </h1>
+        <Image
+          src="/images/profile.jpeg"
+          height={144}
+          width={144}
+          alt="Kevin Shibuya"
+        />
 
         <p className={styles.description}>
           Get started by editing <code>pages/index.js</code>
