@@ -64,6 +64,14 @@ export default function Layout({ children, home }) {
           <Link href="/">← Back to home</Link>
         </div>
       )}
+      <section>
+        <p>
+          (This is a sample website - you’ll be building a similar site like
+          this on{" "}
+          <a href="https://nextjs.org/learn">Next.js documentation tutorial</a>
+          .)
+        </p>
+      </section>
     </div>
   );
 }
