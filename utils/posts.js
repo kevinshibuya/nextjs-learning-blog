@@ -9,7 +9,7 @@ const client = createClient({
 
 export async function getSortedPostsData() {
   return await client.fetch(
-    `*[_type == "post"]{ _id, date, title } | order(_createdAt desc)`
+    `*[_type == "post"]{ _id, date, title, author->{name, image} } | order(_createdAt desc)`
   );
 }
 
@@ -26,5 +26,7 @@ export async function getAllPostIds() {
 }
 
 export async function getPostData(id) {
-  return await client.fetch(`*[_id == '${id}'][0]{ title, date, content }`);
+  return await client.fetch(
+    `*[_id == '${id}'][0]{ title, date, content, author->{name, image} }`
+  );
 }
