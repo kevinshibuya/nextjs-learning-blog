@@ -8,6 +8,11 @@ body {
   font-size: 18px;
 }
 
+html {
+  --color-neutral-content: #2a3c42;
+  --color-neutral-content-strong: #0f1a1c;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -24,4 +29,8 @@ a:hover {
 img {
   max-width: 100%;
   display: block;
+}
+
+.react-icons {
+  vertical-align: middle;
 }

@@ -4,6 +4,11 @@ export interface IPost {
   date: string;
   body: string;
   content?: string;
+  image?: {
+    asset: {
+      url: string;
+    };
+  };
   author: IAuthor;
 }
 
