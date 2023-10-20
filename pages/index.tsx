@@ -10,6 +10,7 @@ import styles from "./index.module.scss";
 import utilStyles from "../styles/utils.module.scss";
 import { IPost } from "../types/posts";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 export default function Home({ posts }: { posts: IPost[] }) {
   const { asPath } = useRouter();
@@ -24,11 +25,17 @@ export default function Home({ posts }: { posts: IPost[] }) {
       title: `${post.author.name} - ${post.title}`,
       url: window.location.origin + asPath,
     };
-    await navigator.share(shareData);
-    console.log("working");
+
+    if (navigator.share && navigator.canShare(shareData)) {
+      await navigator.share(shareData);
+    } else {
+      await navigator.clipboard.writeText(
+        `${window.location.origin + asPath}posts/${post._id}`
+      );
+      toast("🗒️ Copied to clipboard.");
+    }
   };
 
-  console.log(posts);
   return (
     <Layout home>
       <Head>
