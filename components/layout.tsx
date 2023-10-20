@@ -4,10 +4,15 @@ import styles from "./layout.module.scss";
 import utilStyles from "../styles/utils.module.scss";
 import Link from "next/link";
 
+type LayoutProps = {
+  children: string | JSX.Element | JSX.Element[];
+  home?: boolean;
+};
+
 const name = "Kevin Shibuya";
 export const siteTitle = "Next.js Sample Website";
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home }: LayoutProps) {
   return (
     <div className={styles.container}>
       <Head>
