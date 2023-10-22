@@ -3,7 +3,7 @@ export interface IPost {
   title: string;
   date: string;
   body: string;
-  content?: string;
+  content?: [];
   image?: {
     asset: {
       url: string;

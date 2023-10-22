@@ -5,6 +5,7 @@ import { getAllPostIds, getPostData } from "../../utils/posts";
 import utilStyles from "../../styles/utils.module.scss";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { IPost } from "../../types/posts";
+import { PortableText } from "@portabletext/react";
 
 export default function Post({ postData }: { postData: IPost }) {
   console.log(postData);
@@ -18,7 +19,9 @@ export default function Post({ postData }: { postData: IPost }) {
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.content }} />
+        <div>
+          <PortableText value={postData.content} />
+        </div>
       </article>
     </Layout>
   );
