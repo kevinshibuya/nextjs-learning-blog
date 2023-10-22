@@ -51,42 +51,47 @@ export default function Home({ posts }: { posts: IPost[] }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {posts.map((post) => (
-            <li className={utilStyles.listItem} key={post._id}>
-              <Link href={`/posts/${post._id}`} className={styles.cardLink}>
-                <header className={styles.cardHeader}>
-                  <div className={styles.firstSection}>
-                    <Image
-                      src={post.author.image.asset.url}
-                      className={utilStyles.borderCircle}
-                      height={24}
-                      width={24}
-                      alt={`${post.author.name} profile picture.`}
-                    />
-                    <h6>{post.author.name}</h6>
-                    <span>·</span>
-                    <Date dateString={post.date} />
-                  </div>
-                  <button
-                    className={styles.shareButton}
-                    onClick={(event) => handleShare(event, post)}
-                  >
-                    <AiOutlineShareAlt size={"1.5em"} />
-                  </button>
-                </header>
-                <h1>{post.title}</h1>
-                <div className={styles.imageContainer}>
-                  <Image
-                    src={post.image.asset.url}
-                    fill={true}
-                    alt={`${post.author.name} - ${post.title}`}
-                    className={styles.image}
-                    priority
-                  />
-                </div>
-              </Link>
-            </li>
-          ))}
+          {posts.map((post, index) => {
+            return (
+              <>
+                {index !== 0 ? <div className={utilStyles.divisor}></div> : ""}
+                <li className={utilStyles.listItem} key={post._id}>
+                  <Link href={`/posts/${post._id}`} className={styles.cardLink}>
+                    <header className={styles.cardHeader}>
+                      <div className={styles.firstSection}>
+                        <Image
+                          src={post.author.image.asset.url}
+                          className={utilStyles.borderCircle}
+                          height={24}
+                          width={24}
+                          alt={`${post.author.name} profile picture.`}
+                        />
+                        <h6>{post.author.name}</h6>
+                        <span>·</span>
+                        <Date dateString={post.date} />
+                      </div>
+                      <button
+                        className={styles.shareButton}
+                        onClick={(event) => handleShare(event, post)}
+                      >
+                        <AiOutlineShareAlt size={"1.5em"} />
+                      </button>
+                    </header>
+                    <h1>{post.title}</h1>
+                    <div className={styles.imageContainer}>
+                      <Image
+                        src={post.image.asset.url}
+                        fill={true}
+                        alt={`${post.author.name} - ${post.title}`}
+                        className={styles.image}
+                        priority
+                      />
+                    </div>
+                  </Link>
+                </li>
+              </>
+            );
+          })}
         </ul>
       </section>
     </Layout>

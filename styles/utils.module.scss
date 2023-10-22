@@ -43,8 +43,10 @@
   margin: 0;
 }
 
-.listItem {
-  margin: 0 0 1.25rem;
+.divisor {
+  width: 100%;
+  margin: 0.5rem auto;
+  border-bottom: 1px solid var(--color-neutral-border-weak);
 }
 
 .lightText {

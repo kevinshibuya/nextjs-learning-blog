@@ -10,7 +10,7 @@ const client = createClient({
 
 export const getSortedPostsData = async (): Promise<IPost[]> => {
   return await client.fetch(
-    `*[_type == "post"]{ _id, date, title, image{ asset->{ url } }, author->{ name, image{ asset->{ url } } } } | order(_createdAt desc)`
+    `*[_type == "post"]{ _id, date, title, image{ asset->{ url } }, author->{ name, image{ asset->{ url } } } } | order(date desc)`
   );
 };
 
