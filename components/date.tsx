@@ -9,7 +9,7 @@ export default function Date({ dateString }: { dateString: string }) {
     const diffInSeconds = now.diff(postDate, "seconds");
 
     if (diffInSeconds < 60) {
-      return `${diffInSeconds} sec. ago`;
+      return `1 min. ago`;
     } else {
       const humanized = humanizeDuration(diffInSeconds * 1000, {
         largest: 1,

@@ -11,7 +11,8 @@
   line-height: 1.3;
   font-weight: 800;
   letter-spacing: -0.05rem;
-  margin: 1rem 0;
+  margin: 0 0 0.5rem;
+  text-align: start;
 }
 
 .headingLg {
@@ -43,10 +44,24 @@
   margin: 0;
 }
 
-.listItem {
-  margin: 0 0 1.25rem;
+.divisor {
+  width: 100%;
+  margin: 0.5rem auto;
+  border-bottom: 1px solid var(--color-neutral-border-weak);
 }
 
 .lightText {
   color: #666;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+
+  .image {
+    object-fit: cover;
+  }
 }
