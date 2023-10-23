@@ -34,6 +34,6 @@ export const getAllPostIds = async (): Promise<
 
 export const getPostData = async (id: string): Promise<IPost> => {
   return await client.fetch(
-    `*[_id == '${id}'][0]{ title, date, content, author->{ name, image{ asset->{ url } } } }`
+    `*[_id == '${id}'][0]{ _id, title, date, image{ asset->{ url } }, content, author->{ name, image{ asset->{ url } } } }`
   );
 };

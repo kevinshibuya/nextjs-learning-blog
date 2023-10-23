@@ -11,7 +11,8 @@
   line-height: 1.3;
   font-weight: 800;
   letter-spacing: -0.05rem;
-  margin: 1rem 0;
+  margin: 0 0 0.5rem;
+  text-align: start;
 }
 
 .headingLg {
@@ -51,4 +52,16 @@
 
 .lightText {
   color: #666;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+
+  .image {
+    object-fit: cover;
+  }
 }
