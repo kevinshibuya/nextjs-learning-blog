@@ -1,15 +1,18 @@
 export interface IPost {
-  _id?: string;
+  _id: string;
   title: string;
-  date: string;
+  publishedAt: string;
   body: string;
-  content?: [];
-  image?: {
+  content: [];
+  mainImage: {
     asset: {
       url: string;
     };
   };
   author: IAuthor;
+  slug: {
+    current: string;
+  };
 }
 
 export interface IAuthor {

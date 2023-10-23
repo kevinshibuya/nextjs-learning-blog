@@ -5,7 +5,7 @@ module.exports = {
         protocol: "https",
         hostname: "cdn.sanity.io",
         port: "",
-        pathname: "/images/exhorpxe/production/**",
+        pathname: "/images/**",
       },
     ],
   },

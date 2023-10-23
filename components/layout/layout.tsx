@@ -1,18 +1,15 @@
+"use client";
+
 import Head from "next/head";
 import Image from "next/image";
-import styles from "./layout.module.scss";
-import utilStyles from "../styles/utils.module.scss";
 import Link from "next/link";
-import {
-  AiFillGithub,
-  AiFillHome,
-  AiFillLinkedin,
-  AiFillMail,
-  AiOutlineArrowUp,
-} from "react-icons/ai";
+import { ReactNode } from "react";
+import styles from "./layout.module.scss";
+import utilStyles from "../../styles/utils.module.scss";
+import Footer from "../footer/footer";
 
 type LayoutProps = {
-  children: string | JSX.Element | JSX.Element[];
+  children: string | JSX.Element | JSX.Element[] | ReactNode;
   home?: boolean;
 };
 
@@ -20,11 +17,6 @@ const name = "Kevin Shibuya";
 export const siteTitle = "Next.js Sample Website";
 
 export default function Layout({ children, home }: LayoutProps) {
-  const scrollTop = () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  };
-
   return (
     <>
       <div className={styles.container}>
@@ -83,52 +75,7 @@ export default function Layout({ children, home }: LayoutProps) {
           </div>
         )}
       </div>
-      <footer className={styles.footer}>
-        <div className={styles.footerBackground}></div>
-        <div className={styles.content}>
-          <div className={styles.section}>
-            <p>© 2023 Kevin Shibuya</p>
-          </div>
-          <div className={styles.section}>
-            <h1>Current Projects</h1>
-            <Link
-              href="https://shibuya-nextjs-tutorial.vercel.app/"
-              target="_blank"
-            >
-              Next.js Learning Blog
-            </Link>
-          </div>
-          <div className={styles.section}>
-            <h1>Jump to</h1>
-            <Link href="/">
-              <AiFillHome size={"0.9rem"} />
-              Home
-            </Link>
-            <a onClick={scrollTop}>
-              <AiOutlineArrowUp size={"0.9rem"} />
-              To top
-            </a>
-          </div>
-          <div className={styles.section}>
-            <h1>Reach out</h1>
-            <Link
-              href="https://www.linkedin.com/in/kevin-shibuya/"
-              target="_blank"
-            >
-              <AiFillLinkedin size={"0.9rem"} />
-              LinkedIn
-            </Link>
-            <Link href="https://github.com/kevinshibuya" target="_blank">
-              <AiFillGithub size={"0.9rem"} />
-              Github
-            </Link>
-            <Link href="mailto:kevinshibuya@hotmail.com?subject=Great website!&body=Hey Kevin, reaching out to...">
-              <AiFillMail size={"0.9rem"} />
-              Email
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

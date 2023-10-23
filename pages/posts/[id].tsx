@@ -1,12 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
-import Layout from "../../components/layout";
+import Layout from "../../components/layout/layout";
 import { getAllPostIds, getPostData } from "../../utils/posts";
 import utilStyles from "../../styles/utils.module.scss";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { IPost } from "../../types/posts";
 import { PortableText } from "@portabletext/react";
-import PostHeader from "../../components/postHeader";
+import PostHeader from "../../components/postHeader/postHeader";
 
 export default function Post({ postData }: { postData: IPost }) {
   return (
