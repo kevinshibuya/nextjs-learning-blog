@@ -84,6 +84,7 @@ export default function Layout({ children, home }: LayoutProps) {
         )}
       </div>
       <footer className={styles.footer}>
+        <div className={styles.footerBackground}></div>
         <div className={styles.content}>
           <div className={styles.section}>
             <p>© 2023 Kevin Shibuya</p>

@@ -9,7 +9,6 @@ import { PortableText } from "@portabletext/react";
 import PostHeader from "../../components/postHeader";
 
 export default function Post({ postData }: { postData: IPost }) {
-  console.log(postData);
   return (
     <Layout>
       <Head>
