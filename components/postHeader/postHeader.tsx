@@ -29,9 +29,7 @@ export default function PostHeader({ post, home }: PageHeaderProps) {
       await navigator.share(shareData);
     } else {
       await navigator.clipboard.writeText(
-        home
-          ? `${window.location.origin}posts/${post._id}`
-          : `${window.location.origin}`
+        home ? `${shareData.url}posts/${post.slug.current}` : `${shareData.url}`
       );
       toast("🗒️ Copied to clipboard.");
     }
