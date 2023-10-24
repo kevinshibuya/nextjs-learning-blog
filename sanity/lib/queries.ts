@@ -2,7 +2,7 @@ import { groq } from "next-sanity";
 
 export const postsQuery = groq`*[_type == "post"]`;
 
-export const sortedPostsQuery = groq`*[_type == "post" && defined(slug.current)]{ slug{ current }, publishedAt, title, mainImage{ asset->{ url } }, author->{ name, image{ asset->{ url } } } } | order(publishedAt desc)`;
+export const sortedPostsQuery = groq`*[_type == "post" && defined(slug.current)]{ slug{ current }, publishedAt, title, categories[]->{ description, title }, mainImage{ alt, asset->{ url } }, author->{ name, image{ asset->{ url } } } } | order(publishedAt desc)`;
 
 export const postsIdsQuery = groq`*[_type == "post"]{ _id }`;
 

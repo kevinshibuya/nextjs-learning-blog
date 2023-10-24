@@ -1,10 +1,9 @@
 export interface IPost {
-  _id: string;
   title: string;
   publishedAt: string;
-  body: string;
-  content: [];
+  body: [];
   mainImage: {
+    alt: string;
     asset: {
       url: string;
     };
@@ -13,13 +12,17 @@ export interface IPost {
   slug: {
     current: string;
   };
+  categories: { title: string; description: string }[];
 }
-
 export interface IAuthor {
   name: string;
+  slug: {
+    current: string;
+  };
   image: {
     asset: {
       url: string;
     };
+    alt?: string;
   };
 }

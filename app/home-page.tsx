@@ -34,7 +34,7 @@ export default function Home({ posts }: { posts: IPost[] }) {
                         src={post.mainImage.asset.url}
                         fill={true}
                         sizes="(max-width: 768px) 90vw, (max-width: 1200px) 70vw, 70vw"
-                        alt={`${post.author.name} - ${post.title}`}
+                        alt={post.mainImage.alt}
                         className={utilStyles.image}
                         priority
                       />
