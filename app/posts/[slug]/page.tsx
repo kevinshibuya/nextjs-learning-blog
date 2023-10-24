@@ -17,9 +17,16 @@ async function getPostData(params: any) {
   return posts;
 }
 
+export async function generateMetadata({ params }) {
+  const post = await getPostData(params);
+
+  return {
+    title: post.title,
+  };
+}
+
 export default async function Page({ params }: { params: any }) {
   const post = await getPostData(params);
-  // console.log(params);
 
   return <Post postData={post} />;
 }
