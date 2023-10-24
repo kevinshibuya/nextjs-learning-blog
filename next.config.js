@@ -1,12 +1,14 @@
-module.exports = {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "cdn.sanity.io",
         port: "",
-        pathname: "/images/exhorpxe/production/**",
+        pathname: "/images/**",
       },
     ],
   },
 };
+
+module.exports = nextConfig;

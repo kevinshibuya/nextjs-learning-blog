@@ -1,10 +1,11 @@
+"use client";
+
 import Image from "next/image";
-import Date from "../components/date";
-import { IPost } from "../types/posts";
+import Date from "../date";
+import { IPost } from "../../types/posts";
 import styles from "./postHeader.module.scss";
-import utilStyles from "../styles/utils.module.scss";
+import utilStyles from "../../styles/utils.module.scss";
 import { AiOutlineShareAlt } from "react-icons/ai";
-import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 
 type PageHeaderProps = {
@@ -13,8 +14,6 @@ type PageHeaderProps = {
 };
 
 export default function PostHeader({ post, home }: PageHeaderProps) {
-  const { asPath } = useRouter();
-
   const handleShare = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     post: IPost
@@ -23,17 +22,13 @@ export default function PostHeader({ post, home }: PageHeaderProps) {
 
     const shareData = {
       title: `${post.author.name} - ${post.title}`,
-      url: window.location.origin + asPath,
+      url: `${window.location.origin}/posts/${post.slug.current}`,
     };
 
     if (navigator.share && navigator.canShare(shareData)) {
       await navigator.share(shareData);
     } else {
-      await navigator.clipboard.writeText(
-        home
-          ? `${window.location.origin + asPath}posts/${post._id}`
-          : `${window.location.origin + asPath}`
-      );
+      await navigator.clipboard.writeText(shareData.url);
       toast("🗒️ Copied to clipboard.");
     }
   };
@@ -50,7 +45,7 @@ export default function PostHeader({ post, home }: PageHeaderProps) {
         />
         <h6>{post.author.name}</h6>
         <span>·</span>
-        <Date dateString={post.date} />
+        <Date dateString={post.publishedAt} />
       </div>
       <button
         className={styles.shareButton}

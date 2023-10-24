@@ -1,20 +1,14 @@
-import { GetStaticProps } from "next";
-import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import Layout, { siteTitle } from "../components/layout";
-import { getSortedPostsData } from "../utils/posts";
-import styles from "./index.module.scss";
-import utilStyles from "../styles/utils.module.scss";
-import { IPost } from "../types/posts";
-import PostHeader from "../components/postHeader";
+import styles from "../index.module.scss";
+import utilStyles from "../../styles/utils.module.scss";
+import { IPost } from "../../types/posts";
+import PostHeader from "../../components/postHeader/postHeader";
+import Layout from "../../components/layout/layout";
 
 export default function Home({ posts }: { posts: IPost[] }) {
   return (
     <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
       <section className={utilStyles.headingMd}>
         <p>
           This blog will summarize my learning journey with Next.js, all study
@@ -27,18 +21,21 @@ export default function Home({ posts }: { posts: IPost[] }) {
         <ul className={utilStyles.list}>
           {posts.map((post, index) => {
             return (
-              <div key={post._id}>
+              <div key={post.slug.current}>
                 {index !== 0 ? <div className={utilStyles.divisor}></div> : ""}
                 <li className={utilStyles.listItem}>
-                  <Link href={`/posts/${post._id}`} className={styles.cardLink}>
+                  <Link
+                    href={`/posts/${post.slug.current}`}
+                    className={styles.cardLink}
+                  >
                     <PostHeader post={post} home />
                     <h1>{post.title}</h1>
                     <div className={utilStyles.imageContainer}>
                       <Image
-                        src={post.image.asset.url}
+                        src={post.mainImage.asset.url}
                         fill={true}
                         sizes="(max-width: 768px) 90vw, (max-width: 1200px) 70vw, 70vw"
-                        alt={`${post.author.name} - ${post.title}`}
+                        alt={post.mainImage.alt}
                         className={utilStyles.image}
                         priority
                       />
@@ -53,13 +50,3 @@ export default function Home({ posts }: { posts: IPost[] }) {
     </Layout>
   );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getSortedPostsData();
-
-  return {
-    props: {
-      posts,
-    },
-  };
-};
