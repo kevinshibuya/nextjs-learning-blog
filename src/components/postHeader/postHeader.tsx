@@ -22,15 +22,13 @@ export default function PostHeader({ post, home }: PageHeaderProps) {
 
     const shareData = {
       title: `${post.author.name} - ${post.title}`,
-      url: window.location.origin,
+      url: `${window.location.origin}/posts/${post.slug.current}`,
     };
 
     if (navigator.share && navigator.canShare(shareData)) {
       await navigator.share(shareData);
     } else {
-      await navigator.clipboard.writeText(
-        home ? `${shareData.url}posts/${post.slug.current}` : `${shareData.url}`
-      );
+      await navigator.clipboard.writeText(shareData.url);
       toast("🗒️ Copied to clipboard.");
     }
   };
