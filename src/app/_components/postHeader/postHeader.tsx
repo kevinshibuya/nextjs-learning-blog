@@ -2,18 +2,17 @@
 
 import Image from "next/image";
 import Date from "../date";
-import { IPost } from "../../types/posts";
+import { IPost } from "../../../types/posts";
 import styles from "./postHeader.module.scss";
-import utilStyles from "../../styles/utils.module.scss";
+import utilStyles from "../../../styles/utils.module.scss";
 import { AiOutlineShareAlt } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 type PageHeaderProps = {
   post: IPost;
-  home?: boolean;
 };
 
-export default function PostHeader({ post, home }: PageHeaderProps) {
+export default function PostHeader({ post }: PageHeaderProps) {
   const handleShare = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     post: IPost
