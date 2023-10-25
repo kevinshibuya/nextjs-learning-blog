@@ -12,6 +12,8 @@ html {
   --color-neutral-content: #2a3c42;
   --color-neutral-content-strong: #0f1a1c;
   --color-neutral-border-weak: #0000001a;
+  --code-background-inline: #f2f1f1;
+  --code-background-block: #f2f1f1;
 }
 
 * {
@@ -34,4 +36,14 @@ img {
 
 .react-icons {
   vertical-align: middle;
+}
+
+code {
+  background: var(--code-background-inline);
+  padding: 0.125rem 0.25rem;
+  border-radius: 2px;
+}
+
+pre:has(code) {
+  background: var(--code-background-inline) !important;
 }
