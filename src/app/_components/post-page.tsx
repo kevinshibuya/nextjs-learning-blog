@@ -2,8 +2,8 @@ import Image from "next/image";
 import Layout from "../../components/layout/layout";
 import utilStyles from "../../styles/utils.module.scss";
 import { IPost } from "../../types/posts";
-import { PortableText } from "@portabletext/react";
 import PostHeader from "../../components/postHeader/postHeader";
+import BlockConverter from "./block-converter";
 
 export default function Post({ postData }: { postData: IPost }) {
   return (
@@ -20,7 +20,7 @@ export default function Post({ postData }: { postData: IPost }) {
             priority
           />
         </div>
-        <PortableText value={postData.body} />
+        <BlockConverter postData={postData} />
       </article>
     </Layout>
   );
