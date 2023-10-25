@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import { ToastContainer } from "react-toastify";
-
-import "../styles/global.scss";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "./_components/footer/footer";
+import styles from "./layout.module.scss";
+import "../styles/global.scss";
 
 const metadataContent = {
   title: "Next.js Learning Blog",
@@ -42,7 +43,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <div className={styles.container}>{children}</div>
+        <Footer />
         <ToastContainer
           position="bottom-center"
           autoClose={5000}

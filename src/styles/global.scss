@@ -47,3 +47,11 @@ code {
 pre:has(code) {
   background: var(--code-background-inline) !important;
 }
+
+.backToHome {
+  margin: 2rem 0 0;
+}
+
+article {
+  text-align: justify;
+}

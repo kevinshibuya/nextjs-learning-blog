@@ -1,8 +1,12 @@
+import Link from "next/link";
+import Image from "next/image";
+import BlockConverter from "../../_components/block-converter";
+import PostHeader from "../../_components/postHeader/postHeader";
 import { client } from "../../../sanity/lib/client";
 import { postPathsQuery, postQuery } from "../../../sanity/lib/queries";
 import { sanityFetch } from "../../../sanity/lib/sanityFetch";
 import { IPost } from "../../../types/posts";
-import Post from "../../_components/post-page";
+import utilStyles from "../../../styles/utils.module.scss";
 
 export async function generateStaticParams() {
   // Important, use the plain Sanity Client here
@@ -28,5 +32,25 @@ export async function generateMetadata({ params }) {
 export default async function Page({ params }: { params: any }) {
   const post = await getPostData(params);
 
-  return <Post postData={post} />;
+  return (
+    <>
+      <article>
+        <PostHeader post={post} />
+        <h1 className={utilStyles.headingXl}>{post.title}</h1>
+        <div className={utilStyles.imageContainer}>
+          <Image
+            src={post.mainImage.asset.url}
+            fill={true}
+            alt={`${post.author.name} - ${post.title}`}
+            className={utilStyles.image}
+            priority
+          />
+        </div>
+        <BlockConverter postData={post} />
+      </article>
+      <div className="backToHome">
+        <Link href="/">← Back to home</Link>
+      </div>
+    </>
+  );
 }
