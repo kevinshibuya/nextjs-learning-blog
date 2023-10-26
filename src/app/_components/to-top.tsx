@@ -9,9 +9,9 @@ export default function ToTop() {
   };
 
   return (
-    <a onClick={scrollTop}>
+    <span onClick={scrollTop} className="scrollTop">
       <AiOutlineArrowUp size={"0.9rem"} />
       To top
-    </a>
+    </span>
   );
 }

@@ -22,9 +22,9 @@ export default async function Page() {
       <h2 className={utilStyles.headingLg}>Blog</h2>
       <ul className={utilStyles.list}>
         {posts.map((post, index) => (
-          <div key={post.slug.current}>
+          <li key={post.slug.current}>
             {index !== 0 ? <div className={utilStyles.divisor}></div> : ""}
-            <li className={utilStyles.listItem}>
+            <div className={utilStyles.listItem}>
               <Link
                 href={`/posts/${post.slug.current}`}
                 className={styles.cardLink}
@@ -42,8 +42,8 @@ export default async function Page() {
                   />
                 </div>
               </Link>
-            </li>
-          </div>
+            </div>
+          </li>
         ))}
       </ul>
     </section>
