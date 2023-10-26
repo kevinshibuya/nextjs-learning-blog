@@ -6,6 +6,7 @@ import {
 } from "react-icons/ai";
 import styles from "./footer.module.scss";
 import ToTop from "../to-top";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -25,10 +26,10 @@ export default function Footer() {
         </div>
         <div className={styles.section}>
           <h1>Jump to</h1>
-          <a href="/">
+          <Link href="/">
             <AiFillHome size={"0.9rem"} />
             Home
-          </a>
+          </Link>
           <ToTop />
         </div>
         <div className={styles.section}>
