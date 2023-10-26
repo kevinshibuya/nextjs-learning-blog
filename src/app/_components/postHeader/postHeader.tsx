@@ -42,13 +42,14 @@ export default function PostHeader({ post }: PageHeaderProps) {
           width={24}
           alt={`${post.author.name} profile picture.`}
         />
-        <h6>{post.author.name}</h6>
+        <h2>{post.author.name}</h2>
         <span>·</span>
         <Date dateString={post.publishedAt} />
       </div>
       <button
         className={styles.shareButton}
         onClick={(event) => handleShare(event, post)}
+        aria-label="Share button"
       >
         <AiOutlineShareAlt size={"1.5em"} />
       </button>
